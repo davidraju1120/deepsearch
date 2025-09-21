@@ -1,0 +1,71 @@
+{
+  "embedding": {
+    "model_name": "all-MiniLM-L6-v2",
+    "device": "cpu",
+    "batch_size": 32,
+    "max_length": 512,
+    "cache_dir": null,
+    "use_cache": true
+  },
+  "storage": {
+    "data_dir": "data",
+    "documents_dir": "documents",
+    "embeddings_dir": "embeddings",
+    "indexes_dir": "indexes",
+    "max_documents": 10000,
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+  },
+  "reasoning": {
+    "max_steps": 10,
+    "confidence_threshold": 0.5,
+    "enable_multi_step": true,
+    "enable_explanation": true,
+    "reasoning_timeout": 300
+  },
+  "query": {
+    "max_results": 10,
+    "similarity_threshold": 0.7,
+    "enable_refinement": true,
+    "max_refinement_rounds": 3,
+    "enable_summarization": true,
+    "summary_type": "hybrid"
+  },
+  "processing": {
+    "supported_formats": [
+      ".txt",
+      ".md",
+      ".pdf",
+      ".docx",
+      ".html",
+      ".json"
+    ],
+    "max_file_size": 52428800,
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "clean_text": true,
+    "extract_metadata": true
+  },
+  "export": {
+    "output_dir": "exports",
+    "default_format": "pdf",
+    "supported_formats": [
+      "pdf",
+      "markdown",
+      "json"
+    ],
+    "include_metadata": true,
+    "include_reasoning": true
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file_path": null,
+    "max_file_size": 10485760,
+    "backup_count": 5
+  },
+  "debug": false,
+  "version": "1.0.0",
+  "data_dir": "data",
+  "config_file": null
+}

@@ -1,0 +1,87 @@
+# 5-MINUTE DEEP RESEARCHER AGENT PROJECT SCRIPT
+# (Simple English - Approximately 5 minutes when spoken)
+
+---
+
+"Hi everyone! Today I want to show you something really cool - my Deep Researcher Agent project. It's like having a super-smart research assistant that can find, read, and understand information from hundreds of documents, then give you clear answers to your questions.
+
+Let me break it down in simple terms:
+
+**WHAT IS IT?**
+This is an AI-powered research tool that works like a digital librarian and analyst combined. Instead of you spending hours searching through documents, this system does it for you automatically. It can read and understand large amounts of text, find the most relevant information, and explain it in a way that's easy to understand.
+
+**THE MAIN FEATURES:**
+First, it has a beautiful web interface - you don't need to use command lines or complex tools. Just open your browser and start asking questions.
+
+Second, it can handle many different types of documents - PDFs, Word files, text files, and even web pages. You can upload your own documents or use the built-in sample knowledge base.
+
+Third, it has smart features like query refinement - if your question isn't clear, it helps make it better. It can also create summaries of long documents and explain its reasoning step by step.
+
+**HOW DOES IT WORK?**
+Here's the simple version: The system breaks down all the documents into tiny pieces and creates a 'memory' of what each piece contains. When you ask a question, it searches through this memory to find the most relevant pieces, then uses AI to understand and combine that information into a clear answer.
+
+It shows you exactly which documents it used, so you know the information is reliable. And if you want to see the full document, just click a button and it opens right there.
+
+**WHY IS THIS USEFUL?**
+Imagine you're a student researching for a paper - instead of reading 50 different articles, you can ask specific questions and get focused answers with source citations.
+
+For businesses, it's like having a research department that works 24/7 - analyzing reports, finding trends, and providing insights.
+
+For anyone curious about a topic, it's like having an expert guide who can explain complex subjects in simple terms.
+
+**WHAT YOU'LL SEE IN THE DEMO:**
+I'll show you the web interface first - it's clean and modern, like using a professional research tool.
+
+Then I'll ask a question like 'What are the benefits of renewable energy?' You'll see it search through the documents, find the relevant information, and give a clear answer.
+
+You'll notice it shows the sources it used, and each source has a 'View' button. When I click that, the full document opens in a popup so you can read the complete information.
+
+The system can handle many different topics - from artificial intelligence to climate change, from healthcare to finance. I added 20 different sample documents covering various subjects so it can answer questions on many topics.
+
+**THE TECHNICAL SIDE (SIMPLE VERSION):**
+Under the hood, it uses advanced AI models to understand text, create document summaries, and generate answers. It stores document information in a smart way that makes searching very fast.
+
+**FUTURE POTENTIAL:**
+This could be used in schools to help students research, in companies for market analysis, or even as a personal learning tool. The more documents you add, the smarter it gets.
+
+**WRAPPING UP:**
+The Deep Researcher Agent takes something that used to be time-consuming and manual - researching information - and makes it fast, easy, and intelligent. It's like having a research expert available whenever you need one.
+
+Thanks for watching! If you have any questions about how it works or want to try it yourself, I'd be happy to show you more."
+
+---
+
+# SCRIPT TIMING BREAKDOWN:
+# (Approximately 5 minutes total)
+#
+# Introduction: 30 seconds
+# What it is: 45 seconds
+# Main features: 1 minute
+# How it works: 45 seconds
+# Why it's useful: 45 seconds
+# Demo highlights: 45 seconds
+# Technical side: 30 seconds
+# Future potential: 30 seconds
+# Conclusion: 30 seconds
+#
+# Total: 5 minutes
+
+# SPEAKING NOTES:
+# - Speak at a natural, conversational pace
+# - Pause briefly after each section
+# - Use simple words - avoid technical jargon
+# - Smile and make eye contact if presenting in person
+# - Practice timing to stay under 5 minutes
+#
+# VISUAL AIDS TO MENTION:
+# - Web interface screenshots
+# - Demo of asking questions
+# - Showing document viewer popup
+# - Different topic examples
+#
+# KEY PHRASES TO EMPHASIZE:
+# - "Super-smart research assistant"
+# - "Beautiful web interface"
+# - "Click a button and it opens"
+# - "Research expert available 24/7"
+# - "The more documents you add, the smarter it gets"

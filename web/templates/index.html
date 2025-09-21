@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Researcher Agent - AI Research Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Deep Researcher Agent</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="statusBtn" class="btn btn-secondary">
+                        <i class="fas fa-chart-line"></i>
+                        Status
+                    </button>
+                    <button id="helpBtn" class="btn btn-secondary">
+                        <i class="fas fa-question-circle"></i>
+                        Help
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Query Section -->
+            <section class="query-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-search"></i> Research Query</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="queryForm">
+                            <div class="form-group">
+                                <label for="queryInput">Enter your research question:</label>
+                                <textarea 
+                                    id="queryInput" 
+                                    class="form-control" 
+                                    rows="3" 
+                                    placeholder="What would you like to research? For example: 'What are the latest developments in artificial intelligence?'"
+                                    required
+                                ></textarea>
+                            </div>
+                            
+                            <div class="options-row">
+                                <div class="form-check">
+                                    <input type="checkbox" id="enableRefinement" class="form-check-input" checked>
+                                    <label for="enableRefinement" class="form-check-label">
+                                        <i class="fas fa-magic"></i> Enable Query Refinement
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="enableSummarization" class="form-check-input" checked>
+                                    <label for="enableSummarization" class="form-check-label">
+                                        <i class="fas fa-file-alt"></i> Enable Summarization
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Research
+                                </button>
+                                <button type="button" id="clearBtn" class="btn btn-secondary">
+                                    <i class="fas fa-eraser"></i>
+                                    Clear
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>AI is thinking...</p>
+            </div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section" style="display: none;">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-robot"></i> AI Response</h2>
+                        <div class="result-actions">
+                            <button id="explainBtn" class="btn btn-outline">
+                                <i class="fas fa-lightbulb"></i>
+                                Explain Reasoning
+                            </button>
+                            <button id="exportBtn" class="btn btn-outline">
+                                <i class="fas fa-download"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="resultsContent"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Document Ingestion Section -->
+            <section class="ingestion-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-upload"></i> Add Knowledge</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="ingestion-tabs">
+                            <button class="tab-btn active" data-tab="text">
+                                <i class="fas fa-keyboard"></i>
+                                Text Input
+                            </button>
+                            <button class="tab-btn" data-tab="file">
+                                <i class="fas fa-file-upload"></i>
+                                File Upload
+                            </button>
+                        </div>
+                        
+                        <!-- Text Input Tab -->
+                        <div id="textTab" class="tab-content active">
+                            <form id="textForm">
+                                <div class="form-group">
+                                    <label for="textInput">Enter text content to add to knowledge base:</label>
+                                    <textarea 
+                                        id="textInput" 
+                                        class="form-control" 
+                                        rows="6" 
+                                        placeholder="Paste your text content here..."
+                                        required
+                                    ></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Add Text
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- File Upload Tab -->
+                        <div id="fileTab" class="tab-content">
+                            <form id="fileForm">
+                                <div class="form-group">
+                                    <label for="fileInput">Upload a document (PDF, DOCX, TXT, MD):</label>
+                                    <div class="file-upload-area" id="fileUploadArea">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drag and drop your file here or click to select</p>
+                                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt,.md" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-upload"></i>
+                                    Upload File
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Status Modal -->
+    <div id="statusModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-chart-line"></i> System Status</h3>
+                <button class="close-btn" onclick="closeModal('statusModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="statusContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-question-circle"></i> Help & Documentation</h3>
+                <button class="close-btn" onclick="closeModal('helpModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="help-content">
+                    <h4>Getting Started</h4>
+                    <p>The Deep Researcher Agent is an AI-powered research assistant that helps you find and analyze information from your knowledge base.</p>
+                    
+                    <h4>How to Use</h4>
+                    <ol>
+                        <li><strong>Ask Questions:</strong> Enter your research query in the main input field</li>
+                        <li><strong>Enable Features:</strong> Toggle query refinement and summarization as needed</li>
+                        <li><strong>Add Knowledge:</strong> Upload documents or paste text to expand your knowledge base</li>
+                        <li><strong>Review Results:</strong> Analyze the research results and export them if needed</li>
+                    </ol>
+                    
+                    <h4>Features</h4>
+                    <ul>
+                        <li><strong>Query Refinement:</strong> Automatically improves your questions for better results</li>
+                        <li><strong>Summarization:</strong> Creates concise summaries from multiple sources</li>
+                        <li><strong>Reasoning Explanation:</strong> Shows how the AI arrived at its conclusions</li>
+                        <li><strong>Export Options:</strong> Save results as Markdown or PDF files</li>
+                    </ul>
+                    
+                    <h4>Supported File Formats</h4>
+                    <ul>
+                        <li>PDF documents</li>
+                        <li>Microsoft Word documents (.docx)</li>
+                        <li>Plain text files (.txt)</li>
+                        <li>Markdown files (.md)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="exportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-download"></i> Export Results</h3>
+                <button class="close-btn" onclick="closeModal('exportModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="exportForm">
+                    <div class="form-group">
+                        <label for="exportFormat">Export Format:</label>
+                        <select id="exportFormat" class="form-control">
+                            <option value="markdown">Markdown</option>
+                            <option value="pdf">PDF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exportFilename">Filename (optional):</label>
+                        <input type="text" id="exportFilename" class="form-control" placeholder="Leave empty for auto-generated name">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('exportModal')">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

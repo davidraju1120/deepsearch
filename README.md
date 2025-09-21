@@ -120,3 +120,13 @@ This project is open source and available under the MIT License.
 ---
 
 **Made with ❤️ for intelligent research assistance**
+
+
+
+
+PROJECT DEMO:https://drive.google.com/file/d/1qTdnmMOA4ameXUSpLCsFoiN3CtNj25MX/view?usp=sharing
+
+PROJECT EXPLANATION:
+https://drive.google.com/file/d/1bv5v8Dcl_pvVqLN6pbU3ea3pF9dF3us8/view?usp=sharing
+
+GIT REPO:
